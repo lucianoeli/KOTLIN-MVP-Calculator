@@ -9,6 +9,9 @@ import com.example.kotlin_mvp_calculator.rx.EventTypes.ZERO_EVENT
 
 import io.reactivex.disposables.CompositeDisposable
 import android.util.Log
+import com.example.kotlin_mvp_calculator.rx.EventTypes.ONE_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.OP_PLUS_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.RESULT_EVENT
 
 class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) {
 
@@ -26,9 +29,23 @@ class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) 
                         model.inputZero()
                         Log.d("PRESENTER", "zero_event!")
                     }
+
+                    ONE_EVENT -> {
+                        model.inputOne()
+                        Log.d("PRESENTER", "zero_event!")
+                    }
+                    OP_PLUS_EVENT -> {
+                        model.inputPlus()
+                        Log.d("PRESENTER", "plus_event!")
+                    }
+
+                    RESULT_EVENT -> {
+                        model.operate()
+                    }
+
                 }
 
-                view.setText( model.getData())
+                view.setText(model.getData())
             }
         )
     }

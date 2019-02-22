@@ -18,7 +18,7 @@ object EventTypes {
     const val EIGHT_EVENT = 11
     const val NINE_EVENT = 12
 
-    const val OP_SUM_EVENT = 13
+    const val OP_PLUS_EVENT = 13
     const val OP_MIN_EVENT = 14
     const val OP_DIV_EVENT = 15
     const val OP_MUL_EVENT = 16
