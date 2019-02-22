@@ -1,9 +1,15 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
+import android.util.Log
+
+import com.example.kotlin_mvp_calculator.rx.Butns.EMPTY_STRING
+import com.example.kotlin_mvp_calculator.rx.Butns.PLUS
+import com.example.kotlin_mvp_calculator.rx.Butns.MINUS
+import com.example.kotlin_mvp_calculator.rx.Butns.MULTIPLY
+import com.example.kotlin_mvp_calculator.rx.Butns.DIVIDE
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO
+
 class CalculatorModel {
-    companion object {
-        const val EMPTY_STRING = ""
-    }
 
     var firstValue: String = EMPTY_STRING
         private set
@@ -12,8 +18,7 @@ class CalculatorModel {
     var operator: String = EMPTY_STRING
         private set
 
-
-    private fun inputValue(value: String) {
+    fun inputValue(value: String) {
         if (operator != EMPTY_STRING) {
             secondValue += value
         } else {
@@ -21,13 +26,15 @@ class CalculatorModel {
         }
     }
 
-    /** si no hay firstVal pongo operador +
-     *  si ya hay un operador lo pisa
-     *  si ya hay NO HAY un firstVal o HAY un secondVal no hace nada **/
-    private fun inputOp(op: String) {
-        if (firstValue != EMPTY_STRING && secondValue == EMPTY_STRING) {
-            operator = op
+    fun inputOp(op: String) {
+        if (op == MINUS && firstValue == EMPTY_STRING)
+            firstValue = MINUS
+        else {
+            if (op == MINUS || secondValue == EMPTY_STRING) {
+                operator = op
+            }
         }
+
     }
 
     fun reset() {
@@ -36,36 +43,6 @@ class CalculatorModel {
         operator = EMPTY_STRING
     }
 
-    fun inputZero() {
-        //TODO quitar hardcode
-        inputValue("0")
-    }
-
-    fun inputOne() {
-        //TODO quitar hardcode
-        inputValue("1")
-    }
-
-    fun inputTwo() {
-        //TODO quitar hardcode
-        inputValue("2")
-    }
-
-    fun inputPlus() {
-        inputOp("+")
-    }
-
-    fun inputMinus() {
-        inputOp("-")
-    }
-
-    fun inputMultiply() {
-        inputOp("*")
-    }
-
-    fun inputDivide() {
-        inputOp("/")
-    }
 
     fun getData(): String {
         var result: String
@@ -85,21 +62,41 @@ class CalculatorModel {
     }
 
     fun operate() {
-        var result = 0.0
-        val first = firstValue.toDouble()
-        val second = secondValue.toDouble()
 
-        if (operator != EMPTY_STRING) {
-            result = when (operator.toString()) {
-                "+" -> first + second
-                "-" -> first - second
-                "*" -> first * second
-                "/" -> first / second
+        var result: Double = ZERO.toDouble()
+        var first: Double = Double.NaN
+        var second: Double = Double.NaN
 
+        try {
+            first = firstValue.toDouble()
+            result = first
+        } catch (e: NumberFormatException) {
+            Log.e("FIRST VALUE", e.toString())
+        }
+        try {
+            second = secondValue.toDouble()
+        } catch (e: NumberFormatException) {
+            Log.e("SECOND VALUE", e.toString())
+            second = ZERO.toDouble()
+        }
+
+        if (operator != EMPTY_STRING && second != Double.NaN) {
+            result = when (operator) {
+                PLUS -> first + second
+                MINUS -> first - second
+                MULTIPLY -> first * second
+                DIVIDE -> first / second
                 else -> Double.NaN
             }
         }
         reset()
         firstValue = result.toString()
     }
+
+    fun delete() {
+        if(!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()){
+            secondValue = secondValue.substring(0, secondValue.length)
+        }
+    }
+
 }

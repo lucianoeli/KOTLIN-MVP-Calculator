@@ -5,7 +5,7 @@ object EventTypes {
 
     const val RESET_EVENT = 0
     const val RESULT_EVENT = 1
-    const val DOT_EVENT = 2
+    const val DELETE_EVENT = 2
     const val ZERO_EVENT = 3
     const val ONE_EVENT = 4
     const val TWO_EVENT = 5
@@ -20,4 +20,5 @@ object EventTypes {
     const val OP_MIN_EVENT = 14
     const val OP_DIV_EVENT = 15
     const val OP_MUL_EVENT = 16
+    const val DOT_EVENT = 17
 }
