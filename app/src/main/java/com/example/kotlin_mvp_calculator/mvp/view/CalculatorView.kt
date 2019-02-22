@@ -2,9 +2,13 @@ package com.example.kotlin_mvp_calculator.mvp.view
 
 import android.app.Activity
 import com.example.kotlin_mvp_calculator.rx.EventTypes.ONE_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.OP_DIV_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.OP_MIN_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.OP_MUL_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.OP_PLUS_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.RESET_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.RESULT_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.TWO_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.ZERO_EVENT
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
@@ -29,9 +33,29 @@ class CalculatorView(activity: Activity) : ActivityView(activity) {
                                     .clicks()
                                     .map { ONE_EVENT }
                                     .mergeWith(
-                                        activity.plus_button
+                                        activity.two_button
                                             .clicks()
-                                            .map { OP_PLUS_EVENT }
+                                            .map { TWO_EVENT }
+                                            .mergeWith(
+                                                activity.plus_button
+                                                    .clicks()
+                                                    .map { OP_PLUS_EVENT }
+                                                    .mergeWith(
+                                                        activity.minus_button
+                                                            .clicks()
+                                                            .map { OP_MIN_EVENT }
+                                                            .mergeWith(
+                                                                activity.multiply_button
+                                                                    .clicks()
+                                                                    .map { OP_MUL_EVENT }
+                                                                    .mergeWith(
+                                                                        activity.divide_button
+                                                                            .clicks()
+                                                                            .map { OP_DIV_EVENT }
+                                                                    )
+                                                            )
+                                                    )
+                                            )
                                     )
                             )
                     )

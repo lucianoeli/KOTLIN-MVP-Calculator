@@ -10,6 +10,24 @@ class CalculatorModel {
     var operator: String = ""
         private set
 
+
+    private fun inputValue(value: String) {
+        if (operator != "") {
+            secondValue += value
+        } else {
+            firstValue += value
+        }
+    }
+
+    /** si no hay firstVal pongo operador +
+     *  si ya hay un operador lo pisa
+     *  si ya hay NO HAY un firstVal o HAY un secondVal no hace nada **/
+    private fun inputOp(op: String) {
+        if (firstValue != "" && secondValue == "") {
+            operator = op
+        }
+    }
+
     fun reset() {
         firstValue = ""
         secondValue = ""
@@ -26,14 +44,25 @@ class CalculatorModel {
         inputValue("1")
     }
 
+    fun inputTwo() {
+        //TODO quitar hardcode
+        inputValue("2")
+    }
 
     fun inputPlus() {
-        /** si no hay firstVal pongo operador +
-         *  si ya hay un operador lo pisa
-         *  si ya hay NO HAY un firstVal o HAY un secondVal no hace nada **/
-        if (firstValue != "" && secondValue == "") {
-            operator = "+"
-        }
+        inputOp("+")
+    }
+
+    fun inputMinus() {
+        inputOp("-")
+    }
+
+    fun inputMultiply() {
+        inputOp("*")
+    }
+
+    fun inputDivide() {
+        inputOp("/")
     }
 
     fun getData(): String {
@@ -51,14 +80,6 @@ class CalculatorModel {
             } else {
                 return firstValue
             }
-        }
-    }
-
-    private fun inputValue(value: String) {
-        if (operator != "") {
-            secondValue += value
-        } else {
-            firstValue += value
         }
     }
 
