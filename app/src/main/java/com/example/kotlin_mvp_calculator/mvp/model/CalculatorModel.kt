@@ -14,13 +14,13 @@ class CalculatorModel {
         operator = null
     }
 
-    fun inputZero(){
+    fun inputZero() {
         //TODO quitar hardcode
-        if (operator!=null)
+        if (operator != null)
             firstValue = 0.0
     }
 
-    fun getData(): String{
+    fun getData(): String {
         return firstValue.toString() + operator.toString() + secondValue.toString()
     }
 }

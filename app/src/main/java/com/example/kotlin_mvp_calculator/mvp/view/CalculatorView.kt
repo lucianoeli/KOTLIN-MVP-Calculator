@@ -20,7 +20,7 @@ class CalculatorView(activity: Activity) : ActivityView(activity) {
                     .map { ZERO_EVENT }
             )
 
-    fun setText(input: String){
+    fun setText(input: String) {
 
     }
 }
