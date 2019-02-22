@@ -21,8 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_main_activity_delete_btn_label"
-                android:textSize="@dimen/main_activity_number"
-        />
+                android:textSize="@dimen/main_activity_number"/>
 
         <Button
                 android:id="@+id/reset_button"
@@ -30,8 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_main_activity_reset_btn_label"
                 android:textSize="@dimen/main_activity_number"
-                android:layout_toRightOf="@id/delete_button"
-        />
+                android:layout_toRightOf="@id/delete_button"/>
 
         <Button
                 android:id="@+id/one_button"
@@ -39,8 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_main_activity_number_one"
                 android:textSize="@dimen/main_activity_number"
-                android:layout_below="@id/four_button"
-        />
+                android:layout_below="@id/four_button"/>
 
         <Button
                 android:id="@+id/two_button"
@@ -49,8 +46,7 @@
                 android:text="@string/txt_main_activity_number_two"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_below="@id/five_button"
-                android:layout_toEndOf="@id/one_button"
-        />
+                android:layout_toEndOf="@id/one_button"/>
 
         <Button
                 android:id="@+id/three_button"
@@ -59,8 +55,7 @@
                 android:text="@string/txt_main_activity_number_three"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_below="@id/six_button"
-                android:layout_toEndOf="@id/two_button"
-        />
+                android:layout_toEndOf="@id/two_button"/>
 
         <Button
                 android:id="@+id/four_button"
@@ -68,9 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_main_activity_number_four"
                 android:textSize="@dimen/main_activity_number"
-                android:layout_below="@id/seven_button"
-
-        />
+                android:layout_below="@id/seven_button"/>
 
         <Button
                 android:id="@+id/five_button"
@@ -79,9 +72,7 @@
                 android:text="@string/txt_main_activity_number_five"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_below="@+id/eight_button"
-                android:layout_toEndOf="@id/four_button"
-
-        />
+                android:layout_toEndOf="@id/four_button"/>
 
         <Button
                 android:id="@+id/six_button"
@@ -90,8 +81,7 @@
                 android:text="@string/txt_main_activity_number_six"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_below="@+id/nine_button"
-                android:layout_toEndOf="@id/five_button"
-        />
+                android:layout_toEndOf="@id/five_button"/>
 
         <Button
                 android:id="@+id/seven_button"
@@ -99,9 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_main_activity_number_seven"
                 android:textSize="@dimen/main_activity_number"
-                android:layout_below="@id/delete_button"
-
-        />
+                android:layout_below="@id/delete_button"/>
 
         <Button
                 android:id="@+id/eight_button"
@@ -110,8 +98,7 @@
                 android:text="@string/txt_main_activity_number_eight"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@+id/seven_button"
-                android:layout_below="@id/reset_button"
-        />
+                android:layout_below="@id/reset_button"/>
 
         <Button
                 android:id="@+id/nine_button"
@@ -120,8 +107,7 @@
                 android:text="@string/txt_main_activity_number_nine"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/eight_button"
-                android:layout_below="@id/reset_button"
-        />
+                android:layout_below="@id/reset_button"/>
 
         <Button
                 android:id="@+id/divide_button"
@@ -130,8 +116,7 @@
                 android:text="@string/txt_main_activity_op_divide"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/nine_button"
-                android:layout_below="@id/reset_button"
-        />
+                android:layout_below="@id/reset_button"/>
 
         <Button
                 android:id="@+id/multiply_button"
@@ -140,8 +125,7 @@
                 android:text="@string/txt_main_activity_op_multiply"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/six_button"
-                android:layout_below="@id/divide_button"
-        />
+                android:layout_below="@id/divide_button"/>
 
         <Button
                 android:id="@+id/minus_button"
@@ -150,8 +134,7 @@
                 android:text="@string/txt_main_activity_op_minus"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/three_button"
-                android:layout_below="@id/multiply_button"
-        />
+                android:layout_below="@id/multiply_button"/>
 
         <Button
                 android:id="@+id/plus_button"
@@ -160,8 +143,7 @@
                 android:text="@string/txt_main_activity_op_plus"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/result_button"
-                android:layout_below="@+id/minus_button"
-        />
+                android:layout_below="@+id/minus_button"/>
 
         <Button
                 android:id="@+id/result_button"
@@ -171,8 +153,7 @@
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/zero_button"
                 android:layout_below="@id/three_button"
-                style="@style/Widget.AppCompat.Button.Colored"
-        />
+                style="@style/Widget.AppCompat.Button.Colored"/>
 
         <Button
                 android:id="@+id/zero_button"
@@ -181,8 +162,7 @@
                 android:text="@string/txt_main_activity_number_zero"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/dot_button"
-                android:layout_below="@id/two_button"
-        />
+                android:layout_below="@id/two_button"/>
 
         <Button
                 android:id="@+id/dot_button"
@@ -190,9 +170,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_main_activity_dot"
                 android:textSize="@dimen/main_activity_number"
-                android:layout_below="@id/one_button"
-        />
-
+                android:layout_below="@id/one_button"/>
 
     </RelativeLayout>
 
