@@ -1,18 +1,20 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
-import android.util.Log
-
 class CalculatorModel {
-    var firstValue: String = ""
+    companion object {
+        const val EMPTY_STRING = ""
+    }
+
+    var firstValue: String = EMPTY_STRING
         private set
-    var secondValue: String = ""
+    var secondValue: String = EMPTY_STRING
         private set
-    var operator: String = ""
+    var operator: String = EMPTY_STRING
         private set
 
 
     private fun inputValue(value: String) {
-        if (operator != "") {
+        if (operator != EMPTY_STRING) {
             secondValue += value
         } else {
             firstValue += value
@@ -23,15 +25,15 @@ class CalculatorModel {
      *  si ya hay un operador lo pisa
      *  si ya hay NO HAY un firstVal o HAY un secondVal no hace nada **/
     private fun inputOp(op: String) {
-        if (firstValue != "" && secondValue == "") {
+        if (firstValue != EMPTY_STRING && secondValue == EMPTY_STRING) {
             operator = op
         }
     }
 
     fun reset() {
-        firstValue = ""
-        secondValue = ""
-        operator = ""
+        firstValue = EMPTY_STRING
+        secondValue = EMPTY_STRING
+        operator = EMPTY_STRING
     }
 
     fun inputZero() {
@@ -66,21 +68,20 @@ class CalculatorModel {
     }
 
     fun getData(): String {
-        val result: String
-        if (firstValue == "") {
-            return " "
+        var result: String
+        if (firstValue == EMPTY_STRING) {
+            return EMPTY_STRING
         } else {
-            if (operator != "") {
+            if (operator != EMPTY_STRING) {
                 result = firstValue + operator
-                if (secondValue == "") {
-                    return result
-                } else {
-                    return result + secondValue
+                if (secondValue != EMPTY_STRING) {
+                    result += secondValue
                 }
             } else {
                 return firstValue
             }
         }
+        return result
     }
 
     fun operate() {
@@ -88,12 +89,14 @@ class CalculatorModel {
         val first = firstValue.toDouble()
         val second = secondValue.toDouble()
 
-        if (operator != "") {
-            when (operator.toString()) {
-                "+" -> result = first + second
-                "-" -> result = first - second
-                "*" -> result = first * second
-                "/" -> result = first / second
+        if (operator != EMPTY_STRING) {
+            result = when (operator.toString()) {
+                "+" -> first + second
+                "-" -> first - second
+                "*" -> first * second
+                "/" -> first / second
+
+                else -> Double.NaN
             }
         }
         reset()
