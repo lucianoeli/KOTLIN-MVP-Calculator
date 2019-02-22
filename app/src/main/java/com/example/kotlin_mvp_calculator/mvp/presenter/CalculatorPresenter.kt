@@ -27,7 +27,8 @@ class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) 
                         Log.d("PRESENTER", "zero_event!")
                     }
                 }
-                view.setText(model.getData())
+
+                view.setText( model.getData())
             }
         )
     }

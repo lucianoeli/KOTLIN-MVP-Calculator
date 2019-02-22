@@ -21,6 +21,6 @@ class CalculatorView(activity: Activity) : ActivityView(activity) {
             )
 
     fun setText(input: String) {
-
+        activity!!.result_label.text = input
     }
 }

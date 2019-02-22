@@ -149,7 +149,7 @@
                 android:id="@+id/result_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_main_activity_reset_btn_label"
+                android:text="@string/txt_main_activity_reset_btn_equal"
                 android:textSize="@dimen/main_activity_number"
                 android:layout_toEndOf="@id/zero_button"
                 android:layout_below="@id/three_button"

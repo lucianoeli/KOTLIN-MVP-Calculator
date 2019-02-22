@@ -3,6 +3,7 @@
     <string name="txt_main_activity_result_label_value">Result: </string>
     <string name="txt_main_activity_delete_btn_label">CE</string>
     <string name="txt_main_activity_reset_btn_label">AC</string>
+    <string name="txt_main_activity_reset_btn_equal">=</string>
     <string name="txt_main_activity_number_zero">0</string>
     <string name="txt_main_activity_number_one">1</string>
     <string name="txt_main_activity_number_two">2</string>
