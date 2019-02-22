@@ -1,9 +1,14 @@
 package com.example.kotlin_mvp_calculator.mvp.presenter
 
-import android.widget.CalendarView
+
 import com.example.kotlin_mvp_calculator.mvp.model.CalculatorModel
 import com.example.kotlin_mvp_calculator.mvp.view.CalculatorView
+
+import com.example.kotlin_mvp_calculator.rx.EventTypes.RESET_EVENT
+import com.example.kotlin_mvp_calculator.rx.EventTypes.ZERO_EVENT
+
 import io.reactivex.disposables.CompositeDisposable
+import android.util.Log
 
 class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) {
 
@@ -13,15 +18,21 @@ class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) 
         compositeDisposable.add(
             view.viewEventObservable.subscribe { clickEvent ->
                 when (clickEvent) {
-                    INCREMENT_EVENT -> {
-                        model.inc()
-                    }
-                    RESET_COUNT_EVENT -> {0
+                    RESET_EVENT -> {
                         model.reset()
+                        Log.d("PRESENTER", "reset_event!")
+                    }
+                    ZERO_EVENT -> {
+                        model.inputZero()
+                        Log.d("PRESENTER", "zero_event!")
                     }
                 }
-                view.setCount(model.count.toString())
+                view.setText(model.getData())
             }
         )
+    }
+
+    fun disposeObservers() {
+        compositeDisposable.clear()
     }
 }
