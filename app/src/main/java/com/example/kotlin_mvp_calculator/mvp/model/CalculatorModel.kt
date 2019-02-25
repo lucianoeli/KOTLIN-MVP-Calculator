@@ -44,7 +44,7 @@ class CalculatorModel {
     }
 
 
-    fun getData(): String {
+    fun getData2(): String {
         var result: String
         if (firstValue == EMPTY_STRING) {
             return EMPTY_STRING
@@ -59,6 +59,11 @@ class CalculatorModel {
             }
         }
         return result
+    }
+    fun getData(): String = when {
+        operator != EMPTY_STRING && secondValue == EMPTY_STRING -> firstValue + operator
+        operator != EMPTY_STRING && secondValue != EMPTY_STRING -> firstValue + operator + secondValue
+        else -> firstValue
     }
 
     fun operate() {
