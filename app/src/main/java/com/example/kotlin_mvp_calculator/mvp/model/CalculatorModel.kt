@@ -30,9 +30,11 @@ class CalculatorModel {
     fun inputOp(op: String) {
         when (op) {
             MINUS -> {
-                if (firstValue == EMPTY_STRING) firstValue = op
-                else if (operator == EMPTY_STRING) operator = op
-                else secondValue = MINUS
+                when {
+                    firstValue == EMPTY_STRING -> firstValue = op
+                    operator == EMPTY_STRING -> operator = op
+                    else -> secondValue = MINUS
+                }
             }
             else -> if (firstValue != EMPTY_STRING) operator = op
         }
@@ -51,7 +53,6 @@ class CalculatorModel {
     }
 
     fun operate() {
-
         var result: Double = ZERO_DOUBLE
         var first: Double = Double.NaN
         var second: Double
@@ -94,5 +95,6 @@ class CalculatorModel {
                 firstValue = firstValue.substring(ZERO_INT, firstValue.length - ONE_INT)
             }
     }
-
 }
+
+
