@@ -8,7 +8,7 @@ import com.example.kotlin_mvp_calculator.mvp.view.CalculatorView
 
 class MainActivity : AppCompatActivity() {
 
-    private var presenter: CalculatorPresenter? = null
+    private lateinit var presenter: CalculatorPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        presenter?.initPresenter()
+        presenter.initPresenter()
     }
 
     override fun onDestroy() {
-        presenter?.disposeObservers()
+        presenter.disposeObservers()
         super.onDestroy()
     }
 }

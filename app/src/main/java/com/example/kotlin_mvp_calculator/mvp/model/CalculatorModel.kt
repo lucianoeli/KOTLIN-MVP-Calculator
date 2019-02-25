@@ -1,6 +1,7 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
 import android.util.Log
+import com.example.kotlin_mvp_calculator.rx.Butns
 
 import com.example.kotlin_mvp_calculator.rx.Butns.EMPTY_STRING
 import com.example.kotlin_mvp_calculator.rx.Butns.PLUS
@@ -27,14 +28,14 @@ class CalculatorModel {
     }
 
     fun inputOp(op: String) {
-        if (op == MINUS) {
-            if (firstValue == EMPTY_STRING) firstValue = op
-            else if (operator == EMPTY_STRING) operator = op
-            else secondValue = MINUS
-        } else{
-            if (firstValue != EMPTY_STRING) operator = op
+        when (op) {
+            MINUS -> {
+                if (firstValue == EMPTY_STRING) firstValue = op
+                else if (operator == EMPTY_STRING) operator = op
+                else secondValue = MINUS
+            }
+            else -> if (firstValue != EMPTY_STRING) operator = op
         }
-
     }
 
     fun reset() {
@@ -43,22 +44,10 @@ class CalculatorModel {
         operator = EMPTY_STRING
     }
 
-
-    fun getData(): String {
-        var result: String
-        if (firstValue == EMPTY_STRING) {
-            return EMPTY_STRING
-        } else {
-            if (operator != EMPTY_STRING) {
-                result = firstValue + operator
-                if (secondValue != EMPTY_STRING) {
-                    result += secondValue
-                }
-            } else {
-                return firstValue
-            }
-        }
-        return result
+    fun getData(): String = when {
+        operator != EMPTY_STRING && secondValue == EMPTY_STRING -> firstValue + operator
+        operator != EMPTY_STRING && secondValue != EMPTY_STRING -> firstValue + operator + secondValue
+        else -> firstValue
     }
 
     fun operate() {
@@ -94,9 +83,16 @@ class CalculatorModel {
     }
 
     fun delete() {
-        if (!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()) {
-            secondValue = secondValue.substring(0, secondValue.length)
-        }
+        if (!firstValue.isEmpty())
+            if (!operator.isEmpty())
+                if (!secondValue.isEmpty()) {
+                    secondValue = secondValue.substring(Butns.ZERO_INT, secondValue.length - Butns.ONE_INT)
+                } else {
+                    operator = operator.substring(Butns.ZERO_INT, operator.length - Butns.ONE_INT)
+                }
+            else {
+                firstValue = firstValue.substring(Butns.ZERO_INT, firstValue.length - Butns.ONE_INT)
+            }
     }
 
 }
