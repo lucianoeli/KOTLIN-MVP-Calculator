@@ -41,7 +41,6 @@ import com.example.kotlin_mvp_calculator.rx.EventTypes.SEVEN_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.SIX_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.THREE_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.TWO_EVENT
-import java.util.*
 
 class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) {
 

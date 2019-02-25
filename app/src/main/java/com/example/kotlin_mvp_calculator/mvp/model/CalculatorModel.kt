@@ -1,6 +1,5 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
-import android.os.FileObserver.DELETE
 import android.util.Log
 
 import com.example.kotlin_mvp_calculator.rx.Butns.EMPTY_STRING
@@ -32,10 +31,9 @@ class CalculatorModel {
             if (firstValue == EMPTY_STRING) firstValue = op
             else if (operator == EMPTY_STRING) operator = op
             else secondValue = MINUS
-        } else{
+        } else {
             if (firstValue != EMPTY_STRING) operator = op
         }
-
     }
 
     fun reset() {
@@ -43,7 +41,6 @@ class CalculatorModel {
         secondValue = EMPTY_STRING
         operator = EMPTY_STRING
     }
-
 
     fun getData(): String {
         var result: String
@@ -81,13 +78,14 @@ class CalculatorModel {
             second = ZERO.toDouble()
         }
 
-        if (operator != EMPTY_STRING && second != Double.NaN) {
+        if (second != Double.NaN) {
             result = when (operator) {
                 PLUS -> first + second
                 MINUS -> first - second
                 MULTIPLY -> first * second
                 DIVIDE -> first / second
-                else -> Double.NaN
+                EMPTY_STRING -> result
+                else -> result
             }
         }
         reset()
@@ -95,16 +93,15 @@ class CalculatorModel {
     }
 
     fun delete() {
-        if (!firstValue.isEmpty() )
+        if (!firstValue.isEmpty())
             if (!operator.isEmpty())
-                if (!secondValue.isEmpty()){
-                    secondValue = secondValue.substring(0, secondValue.length-1)
+                if (!secondValue.isEmpty()) {
+                    secondValue = secondValue.substring(0, secondValue.length - 1)
+                } else {
+                    operator = operator.substring(0, operator.length - 1)
                 }
-                else{
-                    operator = operator.substring(0, operator.length-1)
-                }
-            else{
-                firstValue = firstValue.substring(0, firstValue.length-1)
+            else {
+                firstValue = firstValue.substring(0, firstValue.length - 1)
             }
     }
 
