@@ -19,4 +19,7 @@ object Butns {
     const val MULTIPLY = "*"
     const val DIVIDE = "/"
     const val DOT = "."
+    const val ZERO_INT = 0
+    const val ZERO_DOUBLE = 0.0
+
 }

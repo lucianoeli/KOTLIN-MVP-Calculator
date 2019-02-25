@@ -8,6 +8,8 @@ import com.example.kotlin_mvp_calculator.rx.Butns.MINUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MULTIPLY
 import com.example.kotlin_mvp_calculator.rx.Butns.DIVIDE
 import com.example.kotlin_mvp_calculator.rx.Butns.ZERO
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_DOUBLE
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_INT
 
 class CalculatorModel {
 
@@ -27,14 +29,14 @@ class CalculatorModel {
     }
 
     fun inputOp(op: String) {
-        if (op == MINUS && firstValue == EMPTY_STRING)
-            firstValue = MINUS
-        else {
-            if (op == MINUS || secondValue == EMPTY_STRING) {
-                operator = op
+        when (op) {
+            MINUS -> {
+                if (firstValue == EMPTY_STRING) firstValue = op
+                else if (operator == EMPTY_STRING) operator = op
+                else secondValue = MINUS
             }
+            else -> if (firstValue != EMPTY_STRING) operator = op
         }
-
     }
 
     fun reset() {
@@ -43,23 +45,6 @@ class CalculatorModel {
         operator = EMPTY_STRING
     }
 
-
-    fun getData2(): String {
-        var result: String
-        if (firstValue == EMPTY_STRING) {
-            return EMPTY_STRING
-        } else {
-            if (operator != EMPTY_STRING) {
-                result = firstValue + operator
-                if (secondValue != EMPTY_STRING) {
-                    result += secondValue
-                }
-            } else {
-                return firstValue
-            }
-        }
-        return result
-    }
     fun getData(): String = when {
         operator != EMPTY_STRING && secondValue == EMPTY_STRING -> firstValue + operator
         operator != EMPTY_STRING && secondValue != EMPTY_STRING -> firstValue + operator + secondValue
@@ -67,8 +52,7 @@ class CalculatorModel {
     }
 
     fun operate() {
-
-        var result: Double = ZERO.toDouble()
+        var result: Double = ZERO_DOUBLE
         var first: Double = Double.NaN
         var second: Double = Double.NaN
 
@@ -100,7 +84,7 @@ class CalculatorModel {
 
     fun delete() {
         if(!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()){
-            secondValue = secondValue.substring(0, secondValue.length)
+            secondValue = secondValue.substring(ZERO_INT, secondValue.length)
         }
     }
 
