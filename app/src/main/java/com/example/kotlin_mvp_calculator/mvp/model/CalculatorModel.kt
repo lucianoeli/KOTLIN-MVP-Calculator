@@ -7,7 +7,10 @@ import com.example.kotlin_mvp_calculator.rx.Butns.PLUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MINUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MULTIPLY
 import com.example.kotlin_mvp_calculator.rx.Butns.DIVIDE
+import com.example.kotlin_mvp_calculator.rx.Butns.ONE_INT
 import com.example.kotlin_mvp_calculator.rx.Butns.ZERO
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_DOUBLE
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_INT
 
 class CalculatorModel {
 
@@ -51,9 +54,9 @@ class CalculatorModel {
 
     fun operate() {
 
-        var result: Double = ZERO.toDouble()
+        var result: Double = ZERO_DOUBLE
         var first: Double = Double.NaN
-        var second: Double = Double.NaN
+        var second: Double
 
         try {
             first = firstValue.toDouble()
@@ -86,12 +89,12 @@ class CalculatorModel {
         if (!firstValue.isEmpty())
             if (!operator.isEmpty())
                 if (!secondValue.isEmpty()) {
-                    secondValue = secondValue.substring(0, secondValue.length - 1)
+                    secondValue = secondValue.substring(ZERO_INT, secondValue.length - ONE_INT)
                 } else {
-                    operator = operator.substring(0, operator.length - 1)
+                    operator = operator.substring(ZERO_INT, operator.length - ONE_INT)
                 }
             else {
-                firstValue = firstValue.substring(0, firstValue.length - 1)
+                firstValue = firstValue.substring(ZERO_INT, firstValue.length - ONE_INT)
             }
     }
 
