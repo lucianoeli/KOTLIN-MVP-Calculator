@@ -42,21 +42,10 @@ class CalculatorModel {
         operator = EMPTY_STRING
     }
 
-    fun getData(): String {
-        var result: String
-        if (firstValue == EMPTY_STRING) {
-            return EMPTY_STRING
-        } else {
-            if (operator != EMPTY_STRING) {
-                result = firstValue + operator
-                if (secondValue != EMPTY_STRING) {
-                    result += secondValue
-                }
-            } else {
-                return firstValue
-            }
-        }
-        return result
+    fun getData(): String = when {
+        operator != EMPTY_STRING && secondValue == EMPTY_STRING -> firstValue + operator
+        operator != EMPTY_STRING && secondValue != EMPTY_STRING -> firstValue + operator + secondValue
+        else -> firstValue
     }
 
     fun operate() {
