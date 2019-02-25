@@ -1,7 +1,8 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
-import com.example.kotlin_mvp_calculator.rx.Butns
+
 import com.example.kotlin_mvp_calculator.rx.Butns.EMPTY_STRING
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_DOUBLE
 
 class CalculatorModel {
     var firstValue: String = EMPTY_STRING
@@ -19,7 +20,7 @@ class CalculatorModel {
 
     fun inputZero() {
         if (operator != null)
-            firstValue = Butns.ZERO
+            firstValue = ZERO_DOUBLE.toString()
     }
 
     fun getData(): String {
