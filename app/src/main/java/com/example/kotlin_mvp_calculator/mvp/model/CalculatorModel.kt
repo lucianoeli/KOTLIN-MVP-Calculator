@@ -8,16 +8,16 @@ import com.example.kotlin_mvp_calculator.rx.Butns.PLUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MINUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MULTIPLY
 import com.example.kotlin_mvp_calculator.rx.Butns.DIVIDE
+import com.example.kotlin_mvp_calculator.rx.Butns.ONE_INT
 import com.example.kotlin_mvp_calculator.rx.Butns.ZERO
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_DOUBLE
+import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_INT
 
 class CalculatorModel {
 
-    var firstValue: String = EMPTY_STRING
-        private set
-    var secondValue: String = EMPTY_STRING
-        private set
-    var operator: String = EMPTY_STRING
-        private set
+    private var firstValue: String = EMPTY_STRING
+    private var secondValue: String = EMPTY_STRING
+    private var operator: String = EMPTY_STRING
 
     fun inputValue(value: String) {
         if (operator != EMPTY_STRING) {
@@ -52,9 +52,9 @@ class CalculatorModel {
 
     fun operate() {
 
-        var result: Double = ZERO.toDouble()
+        var result: Double = ZERO_DOUBLE
         var first: Double = Double.NaN
-        var second: Double = Double.NaN
+        var second: Double
 
         try {
             first = firstValue.toDouble()
@@ -69,13 +69,13 @@ class CalculatorModel {
             second = ZERO.toDouble()
         }
 
-        if (operator != EMPTY_STRING && second != Double.NaN) {
+        if (second != Double.NaN) {
             result = when (operator) {
                 PLUS -> first + second
                 MINUS -> first - second
                 MULTIPLY -> first * second
                 DIVIDE -> first / second
-                else -> Double.NaN
+                else -> result
             }
         }
         reset()
@@ -86,12 +86,12 @@ class CalculatorModel {
         if (!firstValue.isEmpty())
             if (!operator.isEmpty())
                 if (!secondValue.isEmpty()) {
-                    secondValue = secondValue.substring(Butns.ZERO_INT, secondValue.length - Butns.ONE_INT)
+                    secondValue = secondValue.substring(ZERO_INT, secondValue.length - ONE_INT)
                 } else {
-                    operator = operator.substring(Butns.ZERO_INT, operator.length - Butns.ONE_INT)
+                    operator = operator.substring(ZERO_INT, operator.length - ONE_INT)
                 }
             else {
-                firstValue = firstValue.substring(Butns.ZERO_INT, firstValue.length - Butns.ONE_INT)
+                firstValue = firstValue.substring(ZERO_INT, firstValue.length - ONE_INT)
             }
     }
 
