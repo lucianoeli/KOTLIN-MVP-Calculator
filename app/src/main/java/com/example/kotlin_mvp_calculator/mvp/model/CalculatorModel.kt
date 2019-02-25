@@ -27,12 +27,13 @@ class CalculatorModel {
     }
 
     fun inputOp(op: String) {
-        if (op == MINUS) {
-            if (firstValue == EMPTY_STRING) firstValue = op
-            else if (operator == EMPTY_STRING) operator = op
-            else secondValue = MINUS
-        } else {
-            if (firstValue != EMPTY_STRING) operator = op
+        when (op) {
+            MINUS -> {
+                if (firstValue == EMPTY_STRING) firstValue = op
+                else if (operator == EMPTY_STRING) operator = op
+                else secondValue = MINUS
+            }
+            else -> if (firstValue != EMPTY_STRING) operator = op
         }
     }
 
