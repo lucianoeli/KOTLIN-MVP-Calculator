@@ -1,6 +1,5 @@
 package com.example.kotlin_mvp_calculator.mvp.presenter
 
-
 import com.example.kotlin_mvp_calculator.mvp.model.CalculatorModel
 import com.example.kotlin_mvp_calculator.mvp.view.CalculatorView
 
@@ -8,8 +7,7 @@ import com.example.kotlin_mvp_calculator.rx.EventTypes.RESET_EVENT
 import com.example.kotlin_mvp_calculator.rx.EventTypes.ZERO_EVENT
 
 import io.reactivex.disposables.CompositeDisposable
-import android.util.Log
-import com.example.kotlin_mvp_calculator.rx.Butns
+
 import com.example.kotlin_mvp_calculator.rx.Butns.DIVIDE
 import com.example.kotlin_mvp_calculator.rx.Butns.DOT
 import com.example.kotlin_mvp_calculator.rx.Butns.EIGHT

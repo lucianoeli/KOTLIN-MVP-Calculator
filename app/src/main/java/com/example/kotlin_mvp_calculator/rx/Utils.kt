@@ -1,9 +1,7 @@
 package com.example.kotlin_mvp_calculator.rx
 
 object Butns {
-
     const val EMPTY_STRING = ""
-
     const val ZERO = "0"
     const val ONE = "1"
     const val TWO = "2"
