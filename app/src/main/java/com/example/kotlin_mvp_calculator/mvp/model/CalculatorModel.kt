@@ -1,5 +1,6 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
+import android.os.FileObserver.DELETE
 import android.util.Log
 
 import com.example.kotlin_mvp_calculator.rx.Butns.EMPTY_STRING
@@ -94,9 +95,17 @@ class CalculatorModel {
     }
 
     fun delete() {
-        if (!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()) {
-            secondValue = secondValue.substring(0, secondValue.length)
-        }
+        if (!firstValue.isEmpty() )
+            if (!operator.isEmpty())
+                if (!secondValue.isEmpty()){
+                    secondValue = secondValue.substring(0, secondValue.length-1)
+                }
+                else{
+                    operator = operator.substring(0, operator.length-1)
+                }
+            else{
+                firstValue = firstValue.substring(0, firstValue.length-1)
+            }
     }
 
 }
