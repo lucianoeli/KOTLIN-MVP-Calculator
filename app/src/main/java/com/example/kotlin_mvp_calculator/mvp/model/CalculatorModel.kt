@@ -7,6 +7,7 @@ import com.example.kotlin_mvp_calculator.rx.Butns.PLUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MINUS
 import com.example.kotlin_mvp_calculator.rx.Butns.MULTIPLY
 import com.example.kotlin_mvp_calculator.rx.Butns.DIVIDE
+import com.example.kotlin_mvp_calculator.rx.Butns.ONE_INT
 import com.example.kotlin_mvp_calculator.rx.Butns.ZERO
 import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_DOUBLE
 import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_INT
@@ -83,9 +84,16 @@ class CalculatorModel {
     }
 
     fun delete() {
-        if(!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()){
-            secondValue = secondValue.substring(ZERO_INT, secondValue.length)
-        }
+        if (!firstValue.isEmpty())
+            if (!operator.isEmpty())
+                if (!secondValue.isEmpty()) {
+                    secondValue = secondValue.substring(ZERO_INT, secondValue.length - ONE_INT)
+                } else {
+                    operator = operator.substring(ZERO_INT, operator.length - ONE_INT)
+                }
+            else {
+                firstValue = firstValue.substring(ZERO_INT, firstValue.length - ONE_INT)
+            }
     }
 
 }
