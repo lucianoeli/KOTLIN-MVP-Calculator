@@ -14,12 +14,9 @@ import com.example.kotlin_mvp_calculator.rx.Butns.ZERO_INT
 
 class CalculatorModel {
 
-    var firstValue: String = EMPTY_STRING
-        private set
-    var secondValue: String = EMPTY_STRING
-        private set
-    var operator: String = EMPTY_STRING
-        private set
+    private var firstValue: String = EMPTY_STRING
+    private var secondValue: String = EMPTY_STRING
+    private var operator: String = EMPTY_STRING
 
     fun inputValue(value: String) {
         if (operator != EMPTY_STRING) {
@@ -77,7 +74,6 @@ class CalculatorModel {
                 MINUS -> first - second
                 MULTIPLY -> first * second
                 DIVIDE -> first / second
-                EMPTY_STRING -> result
                 else -> result
             }
         }
