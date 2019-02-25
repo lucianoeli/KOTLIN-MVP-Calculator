@@ -27,12 +27,12 @@ class CalculatorModel {
     }
 
     fun inputOp(op: String) {
-        if (op == MINUS && firstValue == EMPTY_STRING)
-            firstValue = MINUS
-        else {
-            if (op == MINUS || secondValue == EMPTY_STRING) {
-                operator = op
-            }
+        if (op == MINUS) {
+            if (firstValue == EMPTY_STRING) firstValue = op
+            else if (operator == EMPTY_STRING) operator = op
+            else secondValue = MINUS
+        } else{
+            if (firstValue != EMPTY_STRING) operator = op
         }
 
     }
@@ -94,7 +94,7 @@ class CalculatorModel {
     }
 
     fun delete() {
-        if(!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()){
+        if (!firstValue.isEmpty() && !operator.isEmpty() && !secondValue.isEmpty()) {
             secondValue = secondValue.substring(0, secondValue.length)
         }
     }
