@@ -1,26 +1,28 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
+import com.example.kotlin_mvp_calculator.rx.Butns
+import com.example.kotlin_mvp_calculator.rx.Butns.EMPTY_STRING
+
 class CalculatorModel {
-    var firstValue: Double? = null
+    var firstValue: String = EMPTY_STRING
         private set
-    var secondValue: Double? = null
+    var secondValue: String = EMPTY_STRING
         private set
-    var operator: String? = null
+    var operator: String = EMPTY_STRING
         private set
 
     fun reset() {
-        firstValue = null
-        secondValue = null
-        operator = null
+        firstValue = EMPTY_STRING
+        secondValue = EMPTY_STRING
+        operator = EMPTY_STRING
     }
 
     fun inputZero() {
-        //TODO quitar hardcode
         if (operator != null)
-            firstValue = 0.0
+            firstValue = Butns.ZERO
     }
 
     fun getData(): String {
-        return firstValue.toString() + operator.toString() + secondValue.toString()
+        return "$firstValue$operator$secondValue"
     }
 }
