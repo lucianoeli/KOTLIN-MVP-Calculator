@@ -1,5 +1,7 @@
 package com.example.kotlin_mvp_calculator.mvp.model
 
+import com.example.kotlin_mvp_calculator.rx.Butns
+
 class CalculatorModel {
     var firstValue: Double? = null
         private set
@@ -15,12 +17,11 @@ class CalculatorModel {
     }
 
     fun inputZero() {
-        //TODO quitar hardcode
         if (operator != null)
-            firstValue = 0.0
+            firstValue = Butns.ZERO_DOUBLE
     }
 
     fun getData(): String {
-        return firstValue.toString() + operator.toString() + secondValue.toString()
+        return "${firstValue.toString()}${operator.toString()}${secondValue.toString()}"
     }
 }
